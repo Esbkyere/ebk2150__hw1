@@ -1,0 +1,68 @@
+---
+title: "Untitled"
+author: "Esther Kyeremah"
+date: "2023-09-22"
+output: github_document
+---
+
+```{r message = FALSE}
+
+library("moderndive")
+library('tidyverse')
+data("early_january_weather")
+
+```
+
+
+The variables are option, temp, year, month, day, hour, dewp, humid, wind_dir, wind_speed, wind_gust, precip, pressure, visib, time_hour.... There are `r nrow(early_january_weather)` rows and `r ncol(early_january_weather)` columns. 
+
+```{r q1a, echo =FALSE, message = FALSE}
+
+mean(pull(early_january_weather, temp))
+
+```
+
+
+The mean temperature is `r mean(pull(early_january_weather, temp))`.
+
+```{r q1b, echo = FALSE, message = FALSE}
+
+
+ggplot (early_january_weather, aes(x = time_hour, y = temp, color = humid)) + geom_point()
+
+ggsave("scatterplot_time_temp.pdf")
+```
+
+The pattern in the scatterplot is undulating showing a rise and fall in the temperature over the days.
+
+*Problem 2*
+```{r}
+
+data_frame =
+ tibble(rand_samp = rnorm(10, mean = 0),
+   log_vec = rand_samp > -0,
+   char_vec = c("My", "name", "is", "Esther", "and", "I", "am", "a", "master", "student"),
+   factor_vec = factor(c("low", "low", "moderate", "high", "moderate", "moderate", "moderate", "high", "high", "high"))
+   )
+   
+ 
+```
+
+*Problem 3*
+```{r}
+mean(pull(data_frame,rand_samp))
+
+mean(pull(data_frame, log_vec))
+
+mean(pull(data_frame, char_vec))
+
+mean(pull(data_frame, factor_vec))
+
+```
+The mean for the random sample is `r mean(pull(data_frame,rand_samp))` and the mean for the logical vector is `r mean(pull(data_frame, log_vec)) `For the character and vector factors we didnt get any answers because they are not numeric or logical.
+
+
+
+
+
+
