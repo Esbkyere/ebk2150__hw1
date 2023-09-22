@@ -62,7 +62,13 @@ mean(pull(data_frame, factor_vec))
 The mean for the random sample is `r mean(pull(data_frame,rand_samp))` and the mean for the logical vector is `r mean(pull(data_frame, log_vec)) `For the character and vector factors we didnt get any answers because they are not numeric or logical.
 
 
+```{r}
+mean(as.numeric(pull(data_frame, log_vec)))
+mean(as.numeric(pull(data_frame, char_vec)))
+mean(as.numeric(pull(data_frame, factor_vec)))
 
+```
 
+The character vector still doesnt give a numeric as they are just characters. The factor is however a 3-level variable so each level has been converted to a number.
 
 
